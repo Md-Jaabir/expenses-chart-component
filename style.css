@@ -1,0 +1,241 @@
+:root{
+    --red:hsl(10, 79%, 65%);
+    --green:hsl(186, 34%, 60%);
+    --dark-brown:hsl(25, 47%, 15%);
+    --light-brown:hsl(28, 10%, 53%);
+    --gray:hsl(27, 66%, 92%);
+    --pale-orange:hsl(33, 100%, 98%);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p,h1,h2,h3,h4,h5,h6,button,span,div{
+    font-family: 'DM Sans', sans-serif;
+}
+
+body{
+    width: 100vw;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray);
+}
+
+main{
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 22px;
+    align-items: center;
+    background-color: var(--red);
+    border-radius: 13px;
+    width: 100%;
+}
+
+.logo-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top .logo-section img{
+    width: 50px;
+}
+
+.top .balance-section{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+}
+
+.balance-section p{
+    font-size: 13px;
+    color: var(--gray);
+}
+
+.balance-section .balance{
+    font-size: 22px;
+    color: white;
+    font-weight: 500;
+}
+
+.chart-section{
+    display: flex;
+    flex-direction: column;
+    background: var(--pale-orange);
+    width: 100%;
+    padding: 22px 25px;
+    border-radius: 13px;
+}
+
+.chart-section h2{
+    font-size: 22px;
+    color: var(--dark-brown);
+}
+
+.chart-section .chart{
+    /* display: flex; */
+    display: none;
+    gap: 13px;
+    margin-top: 26px;
+    height: 130px;
+    width: 100%;
+}
+
+.chart .bar{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.chart .bar .line{
+    height: 40%;
+    width: 35px;
+    background-color: var(--red);
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: .1s linear;
+}
+
+.bar .day{
+    font-size: 13px;
+    color: var(--light-brown);
+}
+
+.line .tooltip{
+    font-size: 12px;
+    background-color: var(--dark-brown);
+    color: white;
+    width: 134%;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: .1s linear;
+    z-index: 4;
+}
+
+
+.bar.max .line:hover{
+    background-color: #b4dfe5!important;
+}
+
+
+.line:hover .tooltip{
+    opacity: 1;
+}
+
+.line:hover{
+    background: #ee917e !important;
+}
+
+.horizontal-line{
+    width: 100%;
+    height: 2px;
+    background-color: var(--gray);
+    margin: 25px 0;
+}
+
+.bottom-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom-section .title{
+    font-size: 13px;
+    color: var(--light-brown);
+}
+
+.bottom-section .total{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.bottom-section .last-month{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.bottom-section .last-month .report{
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark-brown);
+}
+
+.bar.max .line{
+    background-color: var(--green);
+}
+
+.loading{
+    margin-top: 26px;
+    height: 130px;
+    width: 325px;
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading p{
+    color: var(--light-brown);
+    font-size: 15px;
+}
+
+.chart.active{
+    display: flex!important;
+}
+
+.loading.active{
+    display: flex!important;
+}
+
+@media screen and (max-width:400px) {
+    main{
+        width: 90vw;
+    }
+
+    .line{
+        width: 8.5vw !important;
+    }
+
+    .chart-section{
+        padding: 22px 15px;
+    }
+
+    
+}
+
+
+@media screen and (max-width:310px) {
+    .chart{
+        overflow-x: scroll;
+        overflow-y: auto;
+    }
+}
